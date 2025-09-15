@@ -2,56 +2,64 @@
   {
     "name": "Artisan Sourdough",
     "description": "A rustic loaf with a chewy crust and a soft, tangy interior. Perfect for any meal.",
-    "imageFiles": ["sourdough-1.jpg", "sourdough-2.jpg", "sourdough-3.jpg"],
+    "slug": "artisan-sourdough",
+    "imageCount": 5,
     "category": "Bread",
     "folder": "breads"
   },
   {
     "name": "Seeded Whole Wheat",
     "description": "A hearty and wholesome loaf packed with nutritious seeds and grains.",
-    "imageFiles": ["whole-wheat-1.jpg", "whole-wheat-2.jpg"],
+    "slug": "seeded-whole-wheat",
+    "imageCount": 5,
+    "category": "Bread",
+    "folder": "breads"
+  },
+  {
+    "name": "Rustic Baguette",
+    "description": "A classic French baguette with a crisp crust and a light, airy crumb.",
+    "slug": "rustic-baguette",
+    "imageCount": 5,
     "category": "Bread",
     "folder": "breads"
   },
   {
     "name": "Butter Croissants",
     "description": "Flaky, buttery, and irresistibly light. A true Parisian classic made fresh daily.",
-    "imageFiles": ["croissant-1.jpg", "croissant-2.jpg"],
-    "category": "Pastry",
-    "folder": "pastries"
-  },
-  {
-    "name": "Decadent Chocolate Cake",
-    "description": "Rich layers of moist chocolate cake and fudge frosting. Pure indulgence.",
-    "imageFiles": ["chocolate-cake-1.jpg", "chocolate-cake-2.jpg", "chocolate-cake-3.jpg"],
-    "category": "Pastry",
-    "folder": "pastries"
-  },
-  {
-    "name": "Cinnamon Rolls",
-    "description": "Soft, gooey rolls swirled with cinnamon and topped with a sweet cream cheese glaze.",
-    "imageFiles": ["cinnamon-roll-1.jpg", "cinnamon-roll-2.jpg"],
+    "slug": "butter-croissants",
+    "imageCount": 5,
     "category": "Pastry",
     "folder": "pastries"
   },
   {
     "name": "Fresh Fruit Tarts",
     "description": "A crisp, buttery crust filled with vanilla pastry cream and topped with seasonal fruits.",
-    "imageFiles": ["fruit-tart-1.jpg", "fruit-tart-2.jpg"],
+    "slug": "fresh-fruit-tarts",
+    "imageCount": 4,
+    "category": "Pastry",
+    "folder": "pastries"
+  },
+  {
+    "name": "Cinnamon Rolls",
+    "description": "Soft, gooey rolls swirled with cinnamon and topped with a sweet cream cheese glaze.",
+    "slug": "cinnamon-rolls",
+    "imageCount": 4,
     "category": "Pastry",
     "folder": "pastries"
   },
   {
     "name": "Assorted Macarons",
     "description": "Delicate and colorful almond meringue cookies with a variety of flavorful fillings.",
-    "imageFiles": ["macarons-1.jpg", "macarons-2.jpg", "macarons-3.jpg"],
+    "slug": "assorted-macarons",
+    "imageCount": 5,
     "category": "Cookie",
     "folder": "cookies"
   },
   {
-    "name": "Classic Chocolate Chip",
+    "name": "Chocolate Chip Cookies",
     "description": "The ultimate comfort cookie. Soft, chewy, and loaded with semi-sweet chocolate chips.",
-    "imageFiles": ["chocolate-chip-1.jpg"],
+    "slug": "chocolate-chip-cookies",
+    "imageCount": 5,
     "category": "Cookie",
     "folder": "cookies"
   }

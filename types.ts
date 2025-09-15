@@ -8,7 +8,8 @@ export interface Product {
 export interface RawMenuItem {
   name: string;
   description: string;
-  imageFiles: string[];
+  slug: string;
+  imageCount: number;
   category: 'Bread' | 'Pastry' | 'Cookie';
   folder: string;
 }

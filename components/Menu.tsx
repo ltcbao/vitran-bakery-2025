@@ -2,86 +2,6 @@ import React, { useState, useMemo, useEffect } from 'react';
 import type { Product, RawMenuItem } from '../types';
 import Spinner from './Spinner';
 
-<<<<<<< HEAD
-// Raw data for menu items. Image URLs are generated from this.
-const rawMenuItems = [
-  {
-    name: 'Artisan Sourdough',
-    description: 'A rustic loaf with a chewy crust and a soft, tangy interior. Perfect for any meal.',
-    imageFiles: ['sourdough-1.jpg', 'sourdough-2.jpg', 'sourdough-3.jpg'],
-    category: 'Bread',
-    folder: 'breads',
-  },
-  {
-    name: 'Seeded Whole Wheat',
-    description: 'A hearty and wholesome loaf packed with nutritious seeds and grains.',
-    imageFiles: ['whole-wheat-1.jpg', 'whole-wheat-2.jpg'],
-    category: 'Bread',
-    folder: 'breads',
-  },
-  {
-    name: 'Butter Croissants',
-    description: 'Flaky, buttery, and irresistibly light. A true Parisian classic made fresh daily.',
-    imageFiles: ['croissant-1.jpg', 'croissant-2.jpg'],
-    category: 'Pastry',
-    folder: 'pastries',
-  },
-  {
-    name: 'Decadent Chocolate Cake',
-    description: 'Rich layers of moist chocolate cake and fudge frosting. Pure indulgence.',
-    imageFiles: ['chocolate-cake-1.jpg', 'chocolate-cake-2.jpg', 'chocolate-cake-3.jpg'],
-    category: 'Pastry',
-    folder: 'pastries',
-  },
-    {
-    name: 'Cinnamon Rolls',
-    description: 'Soft, gooey rolls swirled with cinnamon and topped with a sweet cream cheese glaze.',
-    imageFiles: ['cinnamon-roll-1.jpg', 'cinnamon-roll-2.jpg'],
-    category: 'Pastry',
-    folder: 'pastries',
-  },
-  {
-    name: 'Fresh Fruit Tarts',
-    description: 'A crisp, buttery crust filled with vanilla pastry cream and topped with seasonal fruits.',
-    imageFiles: ['fruit-tart-1.jpg', 'fruit-tart-2.jpg'],
-    category: 'Pastry',
-    folder: 'pastries',
-  },
-  {
-    name: 'Assorted Macarons',
-    description: 'Delicate and colorful almond meringue cookies with a variety of flavorful fillings.',
-    imageFiles: ['macarons-1.jpg', 'macarons-2.jpg', 'macarons-3.jpg'],
-    category: 'Cookie',
-    folder: 'cookies',
-  },
-    {
-    name: 'Classic Chocolate Chip',
-    description: 'The ultimate comfort cookie. Soft, chewy, and loaded with semi-sweet chocolate chips.',
-    imageFiles: ['chocolate-chip-1.jpg'],
-    category: 'Cookie',
-    folder: 'cookies',
-  },
-// FIX: Use 'as const' to infer literal types for categories. Without this,
-// TypeScript infers `category` as a generic `string`, which is not assignable
-// to the more specific `'Bread' | 'Pastry' | 'Cookie'` type in the `Product` interface.
-] as const;
-
-// Generate the final menuItems array with dynamic image URLs
-const menuItems: Product[] = rawMenuItems.map(item => {
-  const imageUrls = item.imageFiles.map(file => 
-    `/images/${item.folder}/${file}`
-  );
-
-  return {
-    name: item.name,
-    description: item.description,
-    category: item.category,
-    imageUrls,
-  };
-});
-
-=======
->>>>>>> ab40bfde538de7f0e4d22a526f4362d9b91b8504
 const ArrowLeftIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
 );
@@ -177,7 +97,10 @@ const Menu: React.FC = () => {
           name: item.name,
           description: item.description,
           category: item.category,
-          imageUrls: item.imageFiles.map(file => `/images/${item.folder}/${file}`),
+          imageUrls: Array.from(
+            { length: item.imageCount },
+            (_, i) => `/images/${item.folder}/${item.slug}-${i + 1}.jpg`
+          ),
         }));
 
         setMenuItems(processedItems);
