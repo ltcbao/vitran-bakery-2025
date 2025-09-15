@@ -16,17 +16,17 @@ const About: React.FC = () => {
           <div className="md:w-1/2">
             <img 
               src="/images/about-baker.jpg" 
-              alt="Baker kneading dough" 
+              alt="Thợ làm bánh đang trang trí bánh kem" 
               className="rounded-lg shadow-2xl w-full h-auto object-cover"
             />
           </div>
           <div className="md:w-1/2">
-            <h2 className="text-4xl font-serif font-bold text-brand-brown mb-6">Our Story</h2>
+            <h2 className="text-4xl font-serif font-bold text-brand-brown mb-6">Câu Chuyện Của Tiệm</h2>
             <p className="text-gray-600 mb-4 leading-relaxed">
-              Founded in a small kitchen with a big dream, The Artisan Bakery began with a simple passion: to bring people together through the joy of baking. We believe in time-honored techniques, quality ingredients, and a touch of creativity in every loaf, pastry, and cake we create.
+              Ra đời từ một căn bếp nhỏ với niềm đam mê lớn, Tiệm Bánh Vi Trần khởi đầu bằng một khát khao giản dị: gắn kết mọi người qua từng miếng bánh ngọt ngào. Chúng tôi tin vào những công thức truyền thống, nguyên liệu chất lượng và một chút sáng tạo trong mỗi chiếc bánh kem, bánh rau câu mà chúng tôi tạo ra.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              Our bakers arrive before sunrise to ensure every item is as fresh as possible. From our sourdough starter, "Dough-lly Parton," to our hand-laminated croissants, we pour our hearts into our craft. We're more than just a bakery; we're a cornerstone of the community, a place for celebration, and a source of daily comfort.
+              Mỗi ngày, những người thợ làm bánh của chúng tôi đều bắt đầu từ sáng sớm để đảm bảo mỗi sản phẩm đến tay bạn đều tươi mới nhất. Từ những chiếc bánh kem xốp mềm đến những khuôn rau câu mát lạnh, chúng tôi gửi gắm cả trái tim mình vào từng tác phẩm. Vi Trần không chỉ là một tiệm bánh, mà còn là nơi lưu giữ những khoảnh khắc ngọt ngào, nơi sẻ chia niềm vui và mang đến sự ấm áp mỗi ngày.
             </p>
           </div>
         </div>

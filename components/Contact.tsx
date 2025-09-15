@@ -24,24 +24,24 @@ const Contact: React.FC = () => {
         }`}
       >
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-serif font-bold text-brand-brown">Visit Us</h2>
-          <p className="text-lg text-gray-700 mt-2">We can't wait to serve you!</p>
+          <h2 className="text-4xl font-serif font-bold text-brand-brown">Ghé Thăm Chúng Tôi</h2>
+          <p className="text-lg text-gray-700 mt-2">Rất mong được phục vụ quý khách!</p>
         </div>
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
           <div className="flex flex-col items-center">
             <LocationIcon />
-            <h3 className="text-xl font-serif font-bold mt-4 mb-2">Our Address</h3>
-            <p className="text-gray-600">123 Bread Lane<br />Pastryville, PV 54321</p>
+            <h3 className="text-xl font-serif font-bold mt-4 mb-2">Địa Chỉ</h3>
+            <p className="text-gray-600">123 Đường Bánh Ngọt<br />Quận 1, TP. Hồ Chí Minh</p>
           </div>
           <div className="flex flex-col items-center">
             <ClockIcon />
-            <h3 className="text-xl font-serif font-bold mt-4 mb-2">Opening Hours</h3>
-            <p className="text-gray-600">Tue - Fri: 7am - 6pm<br />Sat - Sun: 8am - 4pm</p>
+            <h3 className="text-xl font-serif font-bold mt-4 mb-2">Giờ Mở Cửa</h3>
+            <p className="text-gray-600">Thứ 3 - CN: 8h - 21h</p>
           </div>
           <div className="flex flex-col items-center">
             <PhoneIcon />
-            <h3 className="text-xl font-serif font-bold mt-4 mb-2">Get in Touch</h3>
-            <p className="text-gray-600">hello@artisanbakery.com<br />(123) 456-7890</p>
+            <h3 className="text-xl font-serif font-bold mt-4 mb-2">Liên Hệ</h3>
+            <p className="text-gray-600">hello@vitranbakery.com<br />(123) 456-7890</p>
           </div>
         </div>
       </div>

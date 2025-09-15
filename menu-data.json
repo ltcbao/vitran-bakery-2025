@@ -1,7 +1,7 @@
 [
   {
-    "name": "Artisan Sourdough",
-    "description": "A rustic loaf with a chewy crust and a soft, tangy interior. Perfect for any meal.",
+    "name": "Bánh Kem Bắp Hạnh Nhân",
+    "description": "Sự kết hợp hoàn hảo giữa cốt bánh mềm mịn, kem bắp ngọt thanh và hạnh nhân giòn rụm.",
     "imageFiles": [
       "500161929_2447072749026864_1779726434416165900_n.jpg",
       "500375165_2447290335671772_8334751138673039514_n.jpg",
@@ -9,12 +9,12 @@
       "501534662_2450568032010669_4103962877564396376_n.jpg",
       "501784846_2451068298627309_3849925506075704764_n.jpg"
     ],
-    "category": "Bread",
+    "category": "Bánh Kem",
     "folder": "breads"
   },
   {
-    "name": "Seeded Whole Wheat",
-    "description": "A hearty and wholesome loaf packed with nutritious seeds and grains.",
+    "name": "Bánh Kem Trà Xanh Matcha",
+    "description": "Hương vị trà xanh Nhật Bản đậm đà, tinh tế, mang lại cảm giác thư thái và nhẹ nhàng.",
     "imageFiles": [
       "501796098_2451063358627803_6970644671691032750_n.jpg",
       "502474837_2451000855300720_732048000623672348_n.jpg",
@@ -22,12 +22,12 @@
       "502660780_2451000808634058_2583446418928849351_n.jpg",
       "503175325_2451068228627316_5358438990610465797_n.jpg"
     ],
-    "category": "Bread",
+    "category": "Bánh Kem",
     "folder": "breads"
   },
   {
-    "name": "Rustic Baguette",
-    "description": "A classic French baguette with a crisp crust and a light, airy crumb.",
+    "name": "Bánh Kem Dâu Tươi",
+    "description": "Vị ngọt dịu của kem tươi hòa quyện cùng vị chua thanh của những trái dâu tây căng mọng.",
     "imageFiles": [
       "503660891_2454576598276479_8166286968038494569_n.jpg",
       "503854003_2454579201609552_5543473682260518713_n.jpg",
@@ -35,12 +35,12 @@
       "505712412_2459845957749543_4008754448195272228_n.jpg",
       "sourdough-1.jpg"
     ],
-    "category": "Bread",
+    "category": "Bánh Kem",
     "folder": "breads"
   },
   {
-    "name": "Butter Croissants",
-    "description": "Flaky, buttery, and irresistibly light. A true Parisian classic made fresh daily.",
+    "name": "Rau Câu Trái Cây Nhiệt Đới",
+    "description": "Mát lạnh và sảng khoái với nhiều loại trái cây tươi như xoài, kiwi, dâu tây.",
     "imageFiles": [
       "505990810_2459845571082915_6481646949569023519_n.jpg",
       "507137241_2466303887103750_4954121893275781242_n.jpg",
@@ -48,36 +48,36 @@
       "508119012_2469450790122393_5764016199546704939_n.jpg",
       "508288754_2466303853770420_156581323472452598_n.jpg"
     ],
-    "category": "Pastry",
+    "category": "Rau Câu",
     "folder": "pastries"
   },
   {
-    "name": "Fresh Fruit Tarts",
-    "description": "A crisp, buttery crust filled with vanilla pastry cream and topped with seasonal fruits.",
+    "name": "Rau Câu Sơn Thủy 3D",
+    "description": "Tác phẩm nghệ thuật từ rau câu, kết hợp giữa vị dừa và lá dứa, đẹp mắt và ngon miệng.",
     "imageFiles": [
       "508427657_2469450956789043_8095045239957929360_n.jpg",
       "508842232_2469450996789039_3058442340236704916_n.jpg",
       "509260013_2469450830122389_9126230825418092856_n.jpg",
       "509316754_2469449890122483_7368173848623818422_n.jpg"
     ],
-    "category": "Pastry",
+    "category": "Rau Câu",
     "folder": "pastries"
   },
   {
-    "name": "Cinnamon Rolls",
-    "description": "Soft, gooey rolls swirled with cinnamon and topped with a sweet cream cheese glaze.",
+    "name": "Rau Câu Cà Phê Cốt Dừa",
+    "description": "Hương thơm nồng nàn của cà phê quyện với vị béo ngậy của nước cốt dừa, đánh thức mọi giác quan.",
     "imageFiles": [
       "509437924_2469450203455785_2567974985348256049_n.jpg",
       "509601387_2469449770122495_552438444304163995_n.jpg",
       "510729460_2477188199348652_6879688376182672306_n.jpg",
       "511972021_2477188442681961_2527727784721247761_n.jpg"
     ],
-    "category": "Pastry",
+    "category": "Rau Câu",
     "folder": "pastries"
   },
   {
-    "name": "Assorted Macarons",
-    "description": "Delicate and colorful almond meringue cookies with a variety of flavorful fillings.",
+    "name": "Bánh Su Kem Craquelin",
+    "description": "Vỏ bánh giòn tan với lớp nhân kem béo ngậy, mát lạnh, một món tráng miệng không thể chối từ.",
     "imageFiles": [
       "514408165_2477188309348641_122859936018838259_n.jpg",
       "515920499_2487202581680547_6338282307742865289_n.jpg",
@@ -85,12 +85,12 @@
       "517959405_2487202551680550_1577300772321325414_n.jpg",
       "546398256_2554601994940605_8324410653079765580_n.jpg"
     ],
-    "category": "Cookie",
+    "category": "Bánh Ngọt",
     "folder": "cookies"
   },
   {
-    "name": "Chocolate Chip Cookies",
-    "description": "The ultimate comfort cookie. Soft, chewy, and loaded with semi-sweet chocolate chips.",
+    "name": "Bánh Cupcake Socola",
+    "description": "Cốt bánh socola ẩm mịn, phủ lớp kem bơ ngọt ngào, chiều lòng những tín đồ yêu socola.",
     "imageFiles": [
       "513499528_2477188409348631_8641158377323843523_n.jpg",
       "513694968_2477192539348218_6949213176053091826_n.jpg",
@@ -98,7 +98,7 @@
       "514073912_2477188269348645_8488654677280506485_n.jpg",
       "514358764_2477188376015301_2898096413288147355_n.jpg"
     ],
-    "category": "Cookie",
+    "category": "Bánh Ngọt",
     "folder": "cookies"
   }
 ]

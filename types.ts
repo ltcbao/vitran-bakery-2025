@@ -2,14 +2,14 @@ export interface Product {
   name: string;
   description: string;
   imageUrls: string[];
-  category: 'Bread' | 'Pastry' | 'Cookie';
+  category: 'Bánh Kem' | 'Rau Câu' | 'Bánh Ngọt';
 }
 
 export interface RawMenuItem {
   name: string;
   description: string;
   imageFiles: string[];
-  category: 'Bread' | 'Pastry' | 'Cookie';
+  category: 'Bánh Kem' | 'Rau Câu' | 'Bánh Ngọt';
   folder: string;
 }
 

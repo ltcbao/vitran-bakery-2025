@@ -17,11 +17,11 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-brand-brown text-brand-pink">
       <div className="container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center">
-        <p className="text-sm">&copy; {new Date().getFullYear()} The Artisan Bakery. All Rights Reserved.</p>
+        <p className="text-sm">&copy; {new Date().getFullYear()} Tiệm Bánh Vi Trần. Bảo lưu mọi quyền.</p>
         <div className="flex space-x-4 mt-4 md:mt-0">
-          <a href="#" aria-label="Follow us on Twitter" className="hover:text-white transition-colors duration-300"><TwitterIcon /></a>
-          <a href="#" aria-label="Follow us on Instagram" className="hover:text-white transition-colors duration-300"><InstagramIcon /></a>
-          <a href="#" aria-label="Follow us on Facebook" className="hover:text-white transition-colors duration-300"><FacebookIcon /></a>
+          <a href="#" aria-label="Theo dõi chúng tôi trên Twitter" className="hover:text-white transition-colors duration-300"><TwitterIcon /></a>
+          <a href="#" aria-label="Theo dõi chúng tôi trên Instagram" className="hover:text-white transition-colors duration-300"><InstagramIcon /></a>
+          <a href="#" aria-label="Theo dõi chúng tôi trên Facebook" className="hover:text-white transition-colors duration-300"><FacebookIcon /></a>
         </div>
       </div>
     </footer>

@@ -38,10 +38,10 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
       <div className="relative w-full h-56">
         {hasMultipleImages && (
           <>
-            <button onClick={goToPrevious} className="absolute top-1/2 left-2 z-20 -translate-y-1/2 bg-black/30 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/50" aria-label="Previous image">
+            <button onClick={goToPrevious} className="absolute top-1/2 left-2 z-20 -translate-y-1/2 bg-black/30 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/50" aria-label="Ảnh trước">
               <ArrowLeftIcon />
             </button>
-            <button onClick={goToNext} className="absolute top-1/2 right-2 z-20 -translate-y-1/2 bg-black/30 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/50" aria-label="Next image">
+            <button onClick={goToNext} className="absolute top-1/2 right-2 z-20 -translate-y-1/2 bg-black/30 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/50" aria-label="Ảnh kế tiếp">
               <ArrowRightIcon />
             </button>
           </>
@@ -50,7 +50,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
         <div className="w-full h-full overflow-hidden">
           <div className="flex h-full transition-transform ease-in-out duration-500" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
             {product.imageUrls.map((url, index) => (
-              <img key={index} src={url} alt={`${product.name} image ${index + 1}`} className="w-full h-full object-cover flex-shrink-0" loading="lazy" decoding="async" />
+              <img key={index} src={url} alt={`${product.name} ảnh ${index + 1}`} className="w-full h-full object-cover flex-shrink-0" loading="lazy" decoding="async" />
             ))}
           </div>
         </div>
@@ -62,7 +62,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
                 key={slideIndex} 
                 onClick={(e) => goToSlide(slideIndex, e)} 
                 className={`w-2.5 h-2.5 rounded-full transition-all duration-300 shadow-md ${currentIndex === slideIndex ? 'bg-white scale-125' : 'bg-white/50'}`}
-                aria-label={`Go to image ${slideIndex + 1}`}
+                aria-label={`Đi đến ảnh ${slideIndex + 1}`}
               ></button>
             ))}
           </div>
@@ -81,7 +81,7 @@ const Menu: React.FC = () => {
   const [initialLoading, setInitialLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const [activeCategory, setActiveCategory] = useState<'All' | 'Bread' | 'Pastry' | 'Cookie'>('All');
+  const [activeCategory, setActiveCategory] = useState<'All' | 'Bánh Kem' | 'Rau Câu' | 'Bánh Ngọt'>('All');
   const [isFiltering, setIsFiltering] = useState(false);
 
   useEffect(() => {
@@ -103,7 +103,7 @@ const Menu: React.FC = () => {
         setMenuItems(processedItems);
       } catch (e) {
         console.error("Failed to fetch menu items:", e);
-        setError("Our menu is currently unavailable. Please check back later.");
+        setError("Thực đơn của chúng tôi hiện không có sẵn. Vui lòng kiểm tra lại sau.");
       } finally {
         setInitialLoading(false);
       }
@@ -112,29 +112,25 @@ const Menu: React.FC = () => {
     fetchMenuItems();
   }, []);
 
-  const categories = useMemo(() => {
+  const categoryOrder: ('Bánh Kem' | 'Rau Câu' | 'Bánh Ngọt')[] = ['Bánh Kem', 'Rau Câu', 'Bánh Ngọt'];
+  const filterButtons = ['Tất cả', ...categoryOrder];
+
+  const productsByCategory = useMemo(() => {
     if (!menuItems.length) return {};
     return {
-      "Breads & Loaves": menuItems.filter(item => item.category === 'Bread'),
-      "Pastries & Cakes": menuItems.filter(item => item.category === 'Pastry'),
-      "Cookies & Macarons": menuItems.filter(item => item.category === 'Cookie'),
+      'Bánh Kem': menuItems.filter(item => item.category === 'Bánh Kem'),
+      'Rau Câu': menuItems.filter(item => item.category === 'Rau Câu'),
+      'Bánh Ngọt': menuItems.filter(item => item.category === 'Bánh Ngọt'),
     };
   }, [menuItems]);
 
-  const categoryMap: { [key: string]: 'Bread' | 'Pastry' | 'Cookie' } = {
-    "Breads & Loaves": 'Bread',
-    "Pastries & Cakes": 'Pastry',
-    "Cookies & Macarons": 'Cookie',
-  };
-
-  const filterButtons = ['All', ...Object.keys(categories)];
-
-  const handleFilterClick = (category: 'All' | 'Bread' | 'Pastry' | 'Cookie') => {
-    if (category === activeCategory) return;
+  const handleFilterClick = (buttonText: string) => {
+    const newCategory = buttonText === 'Tất cả' ? 'All' : (buttonText as 'Bánh Kem' | 'Rau Câu' | 'Bánh Ngọt');
+    if (newCategory === activeCategory) return;
 
     setIsFiltering(true);
     setTimeout(() => {
-      setActiveCategory(category);
+      setActiveCategory(newCategory);
       setIsFiltering(false);
     }, 500);
   };
@@ -143,6 +139,11 @@ const Menu: React.FC = () => {
     if (activeCategory === 'All') return [];
     return menuItems.filter(item => item.category === activeCategory);
   }, [activeCategory, menuItems]);
+  
+  const isActiveButton = (buttonText: string) => {
+    if (activeCategory === 'All' && buttonText === 'Tất cả') return true;
+    return activeCategory === buttonText;
+  }
 
   if (initialLoading) {
     return (
@@ -156,7 +157,7 @@ const Menu: React.FC = () => {
     return (
       <section id="menu" className="py-20 bg-brand-pink min-h-[70vh] flex items-center justify-center">
         <div className="text-center text-brand-brown">
-          <h2 className="text-2xl font-serif mb-4">Something went wrong</h2>
+          <h2 className="text-2xl font-serif mb-4">Đã có lỗi xảy ra</h2>
           <p>{error}</p>
         </div>
       </section>
@@ -167,17 +168,17 @@ const Menu: React.FC = () => {
     <section id="menu" className="py-20 bg-brand-pink">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-serif font-bold text-brand-brown">Our Daily Offerings</h2>
-          <p className="text-lg text-gray-700 mt-2">Handcrafted with passion, from our oven to your table.</p>
+          <h2 className="text-4xl font-serif font-bold text-brand-brown">Thực Đơn Hàng Ngày</h2>
+          <p className="text-lg text-gray-700 mt-2">Làm thủ công với tất cả tâm huyết, từ lò nướng đến bàn của bạn.</p>
         </div>
         
         <div className="flex justify-center flex-wrap gap-4 mb-12">
           {filterButtons.map(buttonCategory => (
             <button
               key={buttonCategory}
-              onClick={() => handleFilterClick(buttonCategory === 'All' ? 'All' : categoryMap[buttonCategory])}
+              onClick={() => handleFilterClick(buttonCategory)}
               className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
-                (activeCategory === 'All' && buttonCategory === 'All') || activeCategory === categoryMap[buttonCategory]
+                isActiveButton(buttonCategory)
                   ? 'bg-brand-brown text-white shadow-md'
                   : 'bg-white text-brand-brown hover:bg-brand-cream'
               }`}
@@ -194,12 +195,12 @@ const Menu: React.FC = () => {
             </div>
           ) : activeCategory === 'All' ? (
             <div className="space-y-16">
-              {Object.entries(categories).map(([category, products]) => (
-                products.length > 0 && (
+              {categoryOrder.map(category => (
+                productsByCategory[category] && productsByCategory[category].length > 0 && (
                   <div key={category}>
                     <h3 className="text-3xl font-serif font-bold text-brand-brown mb-8 text-center md:text-left border-b-2 border-brand-accent pb-4">{category}</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                      {products.map((item) => (
+                      {productsByCategory[category].map((item) => (
                         <ProductCard key={item.name} product={item} />
                       ))}
                     </div>

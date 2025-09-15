@@ -68,10 +68,10 @@ const Header: React.FC = () => {
 
 
   const navLinks = [
-    { href: '#about', label: 'About' },
-    { href: '#menu', label: 'Menu' },
-    { href: '#testimonials', label: 'Rave Reviews' },
-    { href: '#contact', label: 'Contact' },
+    { href: '#about', label: 'Câu Chuyện' },
+    { href: '#menu', label: 'Thực Đơn' },
+    { href: '#testimonials', label: 'Cảm Nhận' },
+    { href: '#contact', label: 'Liên Hệ' },
   ];
 
   return (
@@ -80,8 +80,8 @@ const Header: React.FC = () => {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-brand-cream/90 shadow-md backdrop-blur-sm' : 'bg-transparent'}`}
       >
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <a href="#home" className="text-2xl font-serif font-bold text-brand-brown tracking-wider" aria-label="The Artisan Bakery - Home">
-            The Artisan Bakery
+          <a href="#home" className="text-2xl font-serif font-bold text-brand-brown tracking-wider" aria-label="Tiệm Bánh Vi Trần - Trang Chủ">
+            Tiệm Bánh Vi Trần
           </a>
           <nav className="hidden md:flex space-x-8" aria-label="Main navigation">
             {navLinks.map((link) => (
@@ -98,7 +98,7 @@ const Header: React.FC = () => {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-controls="mobile-menu"
             aria-expanded={isMobileMenuOpen}
-            aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-label={isMobileMenuOpen ? 'Đóng menu' : 'Mở menu'}
           >
             <div className="w-6 h-6 flex flex-col justify-around">
               <span className={`block h-0.5 w-full bg-current transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'rotate-45 translate-y-[5px]' : ''}`}></span>

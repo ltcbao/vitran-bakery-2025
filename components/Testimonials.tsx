@@ -4,16 +4,16 @@ import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 const testimonials: Testimonial[] = [
   {
-    quote: "This is hands down the best bakery I've ever been to. The sourdough is life-changing, and the atmosphere is so warm and welcoming. A true neighborhood gem!",
-    author: 'Sarah L.',
+    quote: "Đây chắc chắn là tiệm bánh ngon nhất mình từng đến. Bánh kem bắp mềm tan trong miệng, không gian lại ấm cúng. Một viên ngọc quý của khu phố!",
+    author: 'Chị Lan Anh',
   },
   {
-    quote: "I ordered my wedding cake from The Artisan Bakery, and it was an absolute dream. Not only was it stunning, but it was the most delicious cake I've ever tasted.",
-    author: 'Jessica M.',
+    quote: "Mình đã đặt bánh cưới ở Tiệm Vi Trần, và đó là một quyết định tuyệt vời. Chiếc bánh không chỉ đẹp lộng lẫy mà còn ngon không thể tả. Cảm ơn tiệm rất nhiều!",
+    author: 'Anh Minh',
   },
   {
-    quote: "The croissants are pure magic. Flaky, buttery perfection. I make it a point to stop by every weekend for my coffee and croissant fix. Highly recommend!",
-    author: 'David R.',
+    quote: "Rau câu trái cây ở đây thật sự là một phép màu. Mát lạnh, thanh ngọt, hoàn hảo cho ngày hè. Cuối tuần nào mình cũng phải ghé qua để thưởng thức.",
+    author: 'Bạn Tú',
   },
 ];
 
@@ -36,8 +36,8 @@ const Testimonials: React.FC = () => {
         }`}
       >
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-serif font-bold text-brand-brown">Words from Our Customers</h2>
-          <p className="text-lg text-gray-700 mt-2">We love our community, and they love our baking!</p>
+          <h2 className="text-4xl font-serif font-bold text-brand-brown">Cảm Nhận Từ Khách Hàng</h2>
+          <p className="text-lg text-gray-700 mt-2">Chúng tôi yêu quý khách hàng của mình, và họ cũng yêu những chiếc bánh của chúng tôi!</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
