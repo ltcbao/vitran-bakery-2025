@@ -1,9 +1,6 @@
-// Fix: Add reference to Vite's client types to provide type definitions for `import.meta.glob`.
-/// <reference types="vite/client" />
-
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import type { Product, RawMenuItem } from '../types';
-import Spinner from './Spinner';
+import rawMenuData from '../menu-data.json';
 
 const ArrowLeftIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
@@ -12,6 +9,20 @@ const ArrowLeftIcon = () => (
 const ArrowRightIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
 );
+
+// Process menu data at build time
+const menuItems: Product[] = (rawMenuData as RawMenuItem[]).map((item) => {
+  // Construct absolute paths for images assuming they are in the public/images folder.
+  const imageUrls = item.imageFiles.map(
+    (file) => `/images/${item.folder}/${file}`
+  );
+  return {
+    name: item.name,
+    description: item.description,
+    category: item.category,
+    imageUrls: imageUrls,
+  };
+});
 
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -79,73 +90,20 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   );
 };
 
-// Use Vite's glob import to statically analyze and include all potential menu images.
-const imageModules = import.meta.glob<() => Promise<{ default: string }>>('../images/**/*.{png,jpg,jpeg}');
-
 const Menu: React.FC = () => {
-  const [menuItems, setMenuItems] = useState<Product[]>([]);
-  const [initialLoading, setInitialLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
   const [activeCategory, setActiveCategory] = useState<'All' | 'Bánh Kem' | 'Rau Câu' | 'Bánh Ngọt'>('All');
   const [isFiltering, setIsFiltering] = useState(false);
-
-  useEffect(() => {
-    const fetchMenuItems = async () => {
-      try {
-        const response = await fetch('/menu-data.json');
-        if (!response.ok) {
-          throw new Error(`Network response was not ok: ${response.statusText}`);
-        }
-        const rawData: RawMenuItem[] = await response.json();
-        
-        const processedItems: Product[] = await Promise.all(
-          rawData.map(async (item) => {
-            const imageUrls = await Promise.all(
-              item.imageFiles.map(async (file) => {
-                const path = `../images/${item.folder}/${file}`;
-                const module = imageModules[path];
-                if (module) {
-                  const imported = await module();
-                  return imported.default; // This is the resolved URL after build.
-                }
-                console.warn(`Image module not found for path: ${path}`);
-                return ''; // Return empty string if an image is not found.
-              })
-            );
-
-            return {
-              name: item.name,
-              description: item.description,
-              category: item.category,
-              imageUrls: imageUrls.filter(Boolean), // Filter out empty strings
-            };
-          })
-        );
-
-        setMenuItems(processedItems);
-      } catch (e) {
-        console.error("Failed to fetch menu items:", e);
-        setError("Thực đơn của chúng tôi hiện không có sẵn. Vui lòng kiểm tra lại sau.");
-      } finally {
-        setInitialLoading(false);
-      }
-    };
-
-    fetchMenuItems();
-  }, []);
 
   const categoryOrder: ('Bánh Kem' | 'Rau Câu' | 'Bánh Ngọt')[] = ['Bánh Kem', 'Rau Câu', 'Bánh Ngọt'];
   const filterButtons = ['Tất cả', ...categoryOrder];
 
   const productsByCategory = useMemo(() => {
-    if (!menuItems.length) return {};
     return {
       'Bánh Kem': menuItems.filter(item => item.category === 'Bánh Kem'),
       'Rau Câu': menuItems.filter(item => item.category === 'Rau Câu'),
       'Bánh Ngọt': menuItems.filter(item => item.category === 'Bánh Ngọt'),
     };
-  }, [menuItems]);
+  }, []);
 
   const handleFilterClick = (buttonText: string) => {
     const newCategory = buttonText === 'Tất cả' ? 'All' : (buttonText as 'Bánh Kem' | 'Rau Câu' | 'Bánh Ngọt');
@@ -161,27 +119,19 @@ const Menu: React.FC = () => {
   const filteredProducts = useMemo(() => {
     if (activeCategory === 'All') return [];
     return menuItems.filter(item => item.category === activeCategory);
-  }, [activeCategory, menuItems]);
+  }, [activeCategory]);
   
   const isActiveButton = (buttonText: string) => {
     if (activeCategory === 'All' && buttonText === 'Tất cả') return true;
     return activeCategory === buttonText;
   }
 
-  if (initialLoading) {
-    return (
-      <section id="menu" className="py-20 bg-brand-pink min-h-[70vh] flex items-center justify-center">
-        <Spinner />
-      </section>
-    );
-  }
-
-  if (error) {
+  if (!menuItems.length) {
     return (
       <section id="menu" className="py-20 bg-brand-pink min-h-[70vh] flex items-center justify-center">
         <div className="text-center text-brand-brown">
-          <h2 className="text-2xl font-serif mb-4">Đã có lỗi xảy ra</h2>
-          <p>{error}</p>
+          <h2 className="text-2xl font-serif mb-4">Thực đơn trống</h2>
+          <p>Không tìm thấy sản phẩm nào trong thực đơn.</p>
         </div>
       </section>
     );

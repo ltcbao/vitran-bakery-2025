@@ -69,11 +69,12 @@ const Header: React.FC = () => {
 
   const navLinks = [
     { href: '#about', label: 'Câu Chuyện' },
-    { href: '#ai-consultant', label: 'Tư Vấn AI' },
     { href: '#menu', label: 'Thực Đơn' },
     { href: '#testimonials', label: 'Cảm Nhận' },
     { href: '#contact', label: 'Liên Hệ' },
   ];
+
+  const textColorClass = isScrolled ? 'text-brand-brown' : 'text-white';
 
   return (
     <>
@@ -81,12 +82,12 @@ const Header: React.FC = () => {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-brand-cream/90 shadow-md backdrop-blur-sm' : 'bg-transparent'}`}
       >
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <a href="#home" className="text-2xl font-serif font-bold text-brand-brown tracking-wider" aria-label="Tiệm Bánh Vi Trần - Trang Chủ">
+          <a href="#home" className={`text-2xl font-serif font-bold tracking-wider transition-colors duration-300 ${textColorClass}`} aria-label="Tiệm Bánh Vi Trần - Trang Chủ">
             Tiệm Bánh Vi Trần
           </a>
           <nav className="hidden md:flex space-x-8" aria-label="Main navigation">
             {navLinks.map((link) => (
-              <a key={link.href} href={link.href} className="text-brand-brown hover:text-brand-accent transition-colors duration-300 font-medium">
+              <a key={link.href} href={link.href} className={`font-medium transition-colors duration-300 ${isScrolled ? 'text-brand-brown hover:text-brand-accent' : 'text-white hover:text-brand-pink'}`}>
                 {link.label}
               </a>
             ))}
@@ -95,7 +96,7 @@ const Header: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             ref={menuButtonRef}
-            className="md:hidden text-brand-brown z-50"
+            className={`md:hidden z-50 transition-colors duration-300 ${textColorClass}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-controls="mobile-menu"
             aria-expanded={isMobileMenuOpen}
