@@ -7,58 +7,58 @@ const rawMenuItems = [
   {
     name: 'Artisan Sourdough',
     description: 'A rustic loaf with a chewy crust and a soft, tangy interior. Perfect for any meal.',
-    slug: 'sourdough',
-    imageCount: 3,
+    imageFiles: ['sourdough-1.jpg', 'sourdough-2.jpg', 'sourdough-3.jpg'],
     category: 'Bread',
+    folder: 'breads',
   },
   {
     name: 'Seeded Whole Wheat',
     description: 'A hearty and wholesome loaf packed with nutritious seeds and grains.',
-    slug: 'whole-wheat',
-    imageCount: 2,
+    imageFiles: ['whole-wheat-1.jpg', 'whole-wheat-2.jpg'],
     category: 'Bread',
+    folder: 'breads',
   },
   {
     name: 'Butter Croissants',
     description: 'Flaky, buttery, and irresistibly light. A true Parisian classic made fresh daily.',
-    slug: 'croissant',
-    imageCount: 2,
+    imageFiles: ['croissant-1.jpg', 'croissant-2.jpg'],
     category: 'Pastry',
+    folder: 'pastries',
   },
   {
     name: 'Decadent Chocolate Cake',
     description: 'Rich layers of moist chocolate cake and fudge frosting. Pure indulgence.',
-    slug: 'chocolate-cake',
-    imageCount: 3,
+    imageFiles: ['chocolate-cake-1.jpg', 'chocolate-cake-2.jpg', 'chocolate-cake-3.jpg'],
     category: 'Pastry',
+    folder: 'pastries',
   },
     {
     name: 'Cinnamon Rolls',
     description: 'Soft, gooey rolls swirled with cinnamon and topped with a sweet cream cheese glaze.',
-    slug: 'cinnamon-roll',
-    imageCount: 2,
+    imageFiles: ['cinnamon-roll-1.jpg', 'cinnamon-roll-2.jpg'],
     category: 'Pastry',
+    folder: 'pastries',
   },
   {
     name: 'Fresh Fruit Tarts',
     description: 'A crisp, buttery crust filled with vanilla pastry cream and topped with seasonal fruits.',
-    slug: 'fruit-tart',
-    imageCount: 2,
+    imageFiles: ['fruit-tart-1.jpg', 'fruit-tart-2.jpg'],
     category: 'Pastry',
+    folder: 'pastries',
   },
   {
     name: 'Assorted Macarons',
     description: 'Delicate and colorful almond meringue cookies with a variety of flavorful fillings.',
-    slug: 'macarons',
-    imageCount: 3,
+    imageFiles: ['macarons-1.jpg', 'macarons-2.jpg', 'macarons-3.jpg'],
     category: 'Cookie',
+    folder: 'cookies',
   },
     {
     name: 'Classic Chocolate Chip',
     description: 'The ultimate comfort cookie. Soft, chewy, and loaded with semi-sweet chocolate chips.',
-    slug: 'chocolate-chip',
-    imageCount: 1,
+    imageFiles: ['chocolate-chip-1.jpg'],
     category: 'Cookie',
+    folder: 'cookies',
   },
 // FIX: Use 'as const' to infer literal types for categories. Without this,
 // TypeScript infers `category` as a generic `string`, which is not assignable
@@ -67,9 +67,8 @@ const rawMenuItems = [
 
 // Generate the final menuItems array with dynamic image URLs
 const menuItems: Product[] = rawMenuItems.map(item => {
-  const categoryFolder = `${item.category.toLowerCase()}s`;
-  const imageUrls = Array.from({ length: item.imageCount }, (_, i) => 
-    `/images/${categoryFolder}/${item.slug}-${i + 1}.jpg`
+  const imageUrls = item.imageFiles.map(file => 
+    `/images/${item.folder}/${file}`
   );
 
   return {
