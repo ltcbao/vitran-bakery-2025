@@ -1,10 +1,17 @@
-
 import React from 'react';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 const About: React.FC = () => {
+  const [ref, isInView] = useIntersectionObserver({ threshold: 0.2 });
+
   return (
-    <section id="about" className="py-20 bg-white">
-      <div className="container mx-auto px-6">
+    <section id="about" className="py-20 bg-white overflow-hidden">
+      <div
+        ref={ref}
+        className={`container mx-auto px-6 transition-all duration-1000 ease-out ${
+          isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="flex flex-col md:flex-row items-center gap-12">
           <div className="md:w-1/2">
             <img 

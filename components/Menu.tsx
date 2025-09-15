@@ -1,6 +1,6 @@
-
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import type { Product } from '../types';
+import Spinner from './Spinner';
 
 const menuItems: Product[] = [
   {
@@ -111,7 +111,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 group">
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 group">
       <div className="relative w-full h-56">
         {hasMultipleImages && (
           <>
@@ -127,13 +127,13 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
         <div className="w-full h-full overflow-hidden">
           <div className="flex h-full transition-transform ease-in-out duration-500" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
             {product.imageUrls.map((url, index) => (
-              <img key={index} src={url} alt={`${product.name} image ${index + 1}`} className="w-full h-full object-cover flex-shrink-0" loading="lazy" />
+              <img key={index} src={url} alt={`${product.name} image ${index + 1}`} className="w-full h-full object-cover flex-shrink-0" loading="lazy" decoding="async" />
             ))}
           </div>
         </div>
 
         {hasMultipleImages && (
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             {product.imageUrls.map((_, slideIndex) => (
               <button 
                 key={slideIndex} 
@@ -154,33 +154,89 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
 };
 
 const Menu: React.FC = () => {
-  const categories: { [key: string]: Product[] } = {
+  const [activeCategory, setActiveCategory] = useState<'All' | 'Bread' | 'Pastry' | 'Cookie'>('All');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const categories = useMemo(() => ({
     "Breads & Loaves": menuItems.filter(item => item.category === 'Bread'),
     "Pastries & Cakes": menuItems.filter(item => item.category === 'Pastry'),
     "Cookies & Macarons": menuItems.filter(item => item.category === 'Cookie'),
+  }), []);
+
+  const categoryMap: { [key: string]: 'Bread' | 'Pastry' | 'Cookie' } = {
+    "Breads & Loaves": 'Bread',
+    "Pastries & Cakes": 'Pastry',
+    "Cookies & Macarons": 'Cookie',
   };
+
+  const filterButtons = ['All', ...Object.keys(categories)];
+
+  const handleFilterClick = (category: 'All' | 'Bread' | 'Pastry' | 'Cookie') => {
+    if (category === activeCategory) return;
+
+    setIsLoading(true);
+    setTimeout(() => {
+      setActiveCategory(category);
+      setIsLoading(false);
+    }, 500);
+  };
+
+  const filteredProducts = useMemo(() => {
+    if (activeCategory === 'All') return [];
+    return menuItems.filter(item => item.category === activeCategory);
+  }, [activeCategory]);
 
   return (
     <section id="menu" className="py-20 bg-brand-pink">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-4xl font-serif font-bold text-brand-brown">Our Daily Offerings</h2>
           <p className="text-lg text-gray-700 mt-2">Handcrafted with passion, from our oven to your table.</p>
         </div>
         
-        <div className="space-y-16">
-          {Object.entries(categories).map(([category, products]) => (
-            products.length > 0 && (
-              <div key={category}>
-                <h3 className="text-3xl font-serif font-bold text-brand-brown mb-8 text-center md:text-left border-b-2 border-brand-accent pb-4">{category}</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {products.map((item) => (
-                    <ProductCard key={item.name} product={item} />
-                  ))}
-                </div>
-              </div>
-            )
+        <div className="flex justify-center flex-wrap gap-4 mb-12">
+          {filterButtons.map(buttonCategory => (
+            <button
+              key={buttonCategory}
+              onClick={() => handleFilterClick(buttonCategory === 'All' ? 'All' : categoryMap[buttonCategory])}
+              className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
+                (activeCategory === 'All' && buttonCategory === 'All') || activeCategory === categoryMap[buttonCategory]
+                  ? 'bg-brand-brown text-white shadow-md'
+                  : 'bg-white text-brand-brown hover:bg-brand-cream'
+              }`}
+            >
+              {buttonCategory}
+            </button>
           ))}
+        </div>
+
+        <div className="min-h-[50vh]">
+          {isLoading ? (
+            <div className="flex justify-center items-center h-full pt-16">
+              <Spinner />
+            </div>
+          ) : activeCategory === 'All' ? (
+            <div className="space-y-16">
+              {Object.entries(categories).map(([category, products]) => (
+                products.length > 0 && (
+                  <div key={category}>
+                    <h3 className="text-3xl font-serif font-bold text-brand-brown mb-8 text-center md:text-left border-b-2 border-brand-accent pb-4">{category}</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                      {products.map((item) => (
+                        <ProductCard key={item.name} product={item} />
+                      ))}
+                    </div>
+                  </div>
+                )
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredProducts.map((item) => (
+                <ProductCard key={item.name} product={item} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>

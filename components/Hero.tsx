@@ -1,11 +1,24 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Hero: React.FC = () => {
+  const [offsetY, setOffsetY] = useState(0);
+  const handleScroll = () => setOffsetY(window.pageYOffset);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center text-white">
+    <section id="home" className="relative h-screen flex items-center justify-center text-white overflow-hidden">
       <div className="absolute inset-0 bg-black opacity-40 z-10"></div>
-      <img src="/images/hero-background.jpg" alt="Artisan bread and pastries" className="absolute inset-0 w-full h-full object-cover" />
+      <img 
+        src="/images/hero-background.jpg" 
+        alt="Artisan bread and pastries" 
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ transform: `translateY(${offsetY * 0.5}px)` }}
+      />
       <div className="relative z-20 text-center px-4">
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold drop-shadow-lg mb-4">
           Baked with Love, Served with Joy

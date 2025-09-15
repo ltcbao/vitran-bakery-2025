@@ -1,6 +1,6 @@
-
 import React from 'react';
 import type { Testimonial } from '../types';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 const testimonials: Testimonial[] = [
   {
@@ -25,9 +25,16 @@ const TestimonialCard: React.FC<{ testimonial: Testimonial }> = ({ testimonial }
 );
 
 const Testimonials: React.FC = () => {
+  const [ref, isInView] = useIntersectionObserver({ threshold: 0.1 });
+
   return (
-    <section id="testimonials" className="py-20 bg-white">
-      <div className="container mx-auto px-6">
+    <section id="testimonials" className="py-20 bg-white overflow-hidden">
+      <div 
+        ref={ref}
+        className={`container mx-auto px-6 transition-all duration-1000 ease-out ${
+          isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="text-center mb-12">
           <h2 className="text-4xl font-serif font-bold text-brand-brown">Words from Our Customers</h2>
           <p className="text-lg text-gray-700 mt-2">We love our community, and they love our baking!</p>

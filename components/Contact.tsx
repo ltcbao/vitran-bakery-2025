@@ -1,5 +1,5 @@
-
 import React from 'react';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 const LocationIcon = () => (
   <svg className="w-8 h-8 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
@@ -13,9 +13,16 @@ const PhoneIcon = () => (
 
 
 const Contact: React.FC = () => {
+  const [ref, isInView] = useIntersectionObserver({ threshold: 0.2 });
+
   return (
-    <section id="contact" className="py-20 bg-brand-cream">
-      <div className="container mx-auto px-6">
+    <section id="contact" className="py-20 bg-brand-cream overflow-hidden">
+      <div 
+        ref={ref}
+        className={`container mx-auto px-6 transition-all duration-1000 ease-out ${
+          isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="text-center mb-12">
           <h2 className="text-4xl font-serif font-bold text-brand-brown">Visit Us</h2>
           <p className="text-lg text-gray-700 mt-2">We can't wait to serve you!</p>

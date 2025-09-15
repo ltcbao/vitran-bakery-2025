@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const TwitterIcon = () => (
@@ -20,9 +19,9 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center">
         <p className="text-sm">&copy; {new Date().getFullYear()} The Artisan Bakery. All Rights Reserved.</p>
         <div className="flex space-x-4 mt-4 md:mt-0">
-          <a href="#" aria-label="Twitter" className="hover:text-white transition-colors duration-300"><TwitterIcon /></a>
-          <a href="#" aria-label="Instagram" className="hover:text-white transition-colors duration-300"><InstagramIcon /></a>
-          <a href="#" aria-label="Facebook" className="hover:text-white transition-colors duration-300"><FacebookIcon /></a>
+          <a href="#" aria-label="Follow us on Twitter" className="hover:text-white transition-colors duration-300"><TwitterIcon /></a>
+          <a href="#" aria-label="Follow us on Instagram" className="hover:text-white transition-colors duration-300"><InstagramIcon /></a>
+          <a href="#" aria-label="Follow us on Facebook" className="hover:text-white transition-colors duration-300"><FacebookIcon /></a>
         </div>
       </div>
     </footer>
