@@ -1,3 +1,6 @@
+// Fix: Add reference to Vite's client types to provide type definitions for `import.meta.glob`.
+/// <reference types="vite/client" />
+
 import React, { useState, useMemo, useEffect } from 'react';
 import type { Product, RawMenuItem } from '../types';
 import Spinner from './Spinner';
@@ -76,6 +79,9 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   );
 };
 
+// Use Vite's glob import to statically analyze and include all potential menu images.
+const imageModules = import.meta.glob<() => Promise<{ default: string }>>('../images/**/*.{png,jpg,jpeg}');
+
 const Menu: React.FC = () => {
   const [menuItems, setMenuItems] = useState<Product[]>([]);
   const [initialLoading, setInitialLoading] = useState(true);
@@ -93,12 +99,29 @@ const Menu: React.FC = () => {
         }
         const rawData: RawMenuItem[] = await response.json();
         
-        const processedItems: Product[] = rawData.map(item => ({
-          name: item.name,
-          description: item.description,
-          category: item.category,
-          imageUrls: item.imageFiles.map(file => `/images/${item.folder}/${file}`),
-        }));
+        const processedItems: Product[] = await Promise.all(
+          rawData.map(async (item) => {
+            const imageUrls = await Promise.all(
+              item.imageFiles.map(async (file) => {
+                const path = `../images/${item.folder}/${file}`;
+                const module = imageModules[path];
+                if (module) {
+                  const imported = await module();
+                  return imported.default; // This is the resolved URL after build.
+                }
+                console.warn(`Image module not found for path: ${path}`);
+                return ''; // Return empty string if an image is not found.
+              })
+            );
+
+            return {
+              name: item.name,
+              description: item.description,
+              category: item.category,
+              imageUrls: imageUrls.filter(Boolean), // Filter out empty strings
+            };
+          })
+        );
 
         setMenuItems(processedItems);
       } catch (e) {
