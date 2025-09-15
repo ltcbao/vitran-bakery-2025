@@ -2,82 +2,83 @@ import React, { useState, useMemo } from 'react';
 import type { Product } from '../types';
 import Spinner from './Spinner';
 
-const menuItems: Product[] = [
+// Raw data for menu items. Image URLs are generated from this.
+const rawMenuItems = [
   {
     name: 'Artisan Sourdough',
     description: 'A rustic loaf with a chewy crust and a soft, tangy interior. Perfect for any meal.',
-    imageUrls: [
-      '/images/breads/sourdough-1.jpg',
-      '/images/breads/sourdough-2.jpg',
-      '/images/breads/sourdough-3.jpg',
-    ],
+    slug: 'sourdough',
+    imageCount: 3,
     category: 'Bread',
   },
   {
     name: 'Seeded Whole Wheat',
     description: 'A hearty and wholesome loaf packed with nutritious seeds and grains.',
-    imageUrls: [
-      '/images/breads/whole-wheat-1.jpg',
-      '/images/breads/whole-wheat-2.jpg',
-    ],
+    slug: 'whole-wheat',
+    imageCount: 2,
     category: 'Bread',
   },
   {
     name: 'Butter Croissants',
     description: 'Flaky, buttery, and irresistibly light. A true Parisian classic made fresh daily.',
-    imageUrls: [
-      '/images/pastries/croissant-1.jpg',
-      '/images/pastries/croissant-2.jpg',
-    ],
+    slug: 'croissant',
+    imageCount: 2,
     category: 'Pastry',
   },
   {
     name: 'Decadent Chocolate Cake',
     description: 'Rich layers of moist chocolate cake and fudge frosting. Pure indulgence.',
-    imageUrls: [
-      '/images/pastries/chocolate-cake-1.jpg',
-      '/images/pastries/chocolate-cake-2.jpg',
-      '/images/pastries/chocolate-cake-3.jpg',
-    ],
+    slug: 'chocolate-cake',
+    imageCount: 3,
     category: 'Pastry',
   },
     {
     name: 'Cinnamon Rolls',
     description: 'Soft, gooey rolls swirled with cinnamon and topped with a sweet cream cheese glaze.',
-    imageUrls: [
-        '/images/pastries/cinnamon-roll-1.jpg',
-        '/images/pastries/cinnamon-roll-2.jpg',
-    ],
+    slug: 'cinnamon-roll',
+    imageCount: 2,
     category: 'Pastry',
   },
   {
     name: 'Fresh Fruit Tarts',
     description: 'A crisp, buttery crust filled with vanilla pastry cream and topped with seasonal fruits.',
-    imageUrls: [
-      '/images/pastries/fruit-tart-1.jpg',
-      '/images/pastries/fruit-tart-2.jpg',
-    ],
+    slug: 'fruit-tart',
+    imageCount: 2,
     category: 'Pastry',
   },
   {
     name: 'Assorted Macarons',
     description: 'Delicate and colorful almond meringue cookies with a variety of flavorful fillings.',
-    imageUrls: [
-      '/images/cookies/macarons-1.jpg',
-      '/images/cookies/macarons-2.jpg',
-      '/images/cookies/macarons-3.jpg',
-    ],
+    slug: 'macarons',
+    imageCount: 3,
     category: 'Cookie',
   },
     {
     name: 'Classic Chocolate Chip',
     description: 'The ultimate comfort cookie. Soft, chewy, and loaded with semi-sweet chocolate chips.',
-    imageUrls: [
-      '/images/cookies/chocolate-chip-1.jpg',
-    ],
+    slug: 'chocolate-chip',
+    imageCount: 1,
     category: 'Cookie',
   },
-];
+// FIX: Use 'as const' to infer literal types for categories. Without this,
+// TypeScript infers `category` as a generic `string`, which is not assignable
+// to the more specific `'Bread' | 'Pastry' | 'Cookie'` type in the `Product` interface.
+] as const;
+
+// Generate the final menuItems array with dynamic image URLs
+const menuItems: Product[] = rawMenuItems.map(item => {
+  const categoryFolder = `${item.category.toLowerCase()}s`;
+  const imageUrls = Array.from({ length: item.imageCount }, (_, i) => 
+    `/images/${categoryFolder}/${item.slug}-${i + 1}.jpg`
+  );
+
+  return {
+    name: item.name,
+    description: item.description,
+    category: item.category,
+    imageUrls,
+  };
+});
 
 const ArrowLeftIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
