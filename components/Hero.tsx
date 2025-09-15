@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import heroBackgroundImage from '../images/hero-background.png';
 
 const Hero: React.FC = () => {
   const [offsetY, setOffsetY] = useState(0);
@@ -13,8 +14,8 @@ const Hero: React.FC = () => {
     <section id="home" className="relative h-screen flex items-center justify-center text-white overflow-hidden">
       <div className="absolute inset-0 bg-black opacity-40 z-10"></div>
       <img 
-        src="/images/hero-background.png" 
-        alt="Một chiếc bánh kem nghệ thuật được trang trí tinh xảo trên nền tối sang trọng" 
+        src={heroBackgroundImage}
+        alt="Bánh kem và rau câu nghệ thuật" 
         className="absolute inset-0 w-full h-full object-cover"
         style={{ transform: `translateY(${offsetY * 0.5}px)` }}
       />

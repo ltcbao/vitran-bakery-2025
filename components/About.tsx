@@ -1,5 +1,6 @@
 import React from 'react';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
+import aboutBakerImage from '../images/about-baker.png';
 
 const About: React.FC = () => {
   const [ref, isInView] = useIntersectionObserver({ threshold: 0.2 });
@@ -15,7 +16,7 @@ const About: React.FC = () => {
         <div className="flex flex-col md:flex-row items-center gap-12">
           <div className="md:w-1/2">
             <img 
-              src="/images/about-baker.jpg" 
+              src={aboutBakerImage} 
               alt="Thợ làm bánh đang trang trí bánh kem" 
               className="rounded-lg shadow-2xl w-full h-auto object-cover"
             />
