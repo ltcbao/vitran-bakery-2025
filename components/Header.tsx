@@ -69,6 +69,7 @@ const Header: React.FC = () => {
 
   const navLinks = [
     { href: '#about', label: 'Câu Chuyện' },
+    { href: '#ai-consultant', label: 'Tư Vấn AI' },
     { href: '#menu', label: 'Thực Đơn' },
     { href: '#testimonials', label: 'Cảm Nhận' },
     { href: '#contact', label: 'Liên Hệ' },

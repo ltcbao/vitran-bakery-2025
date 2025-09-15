@@ -17,24 +17,27 @@ export const useIntersectionObserver = (
   const [isInView, setIsInView] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
+  // Use a stringified version of options for stable dependency
+  const stableOptions = JSON.stringify(options);
+
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
     
     const observer = new IntersectionObserver(([entry]) => {
       // Update state when element is intersecting and animation hasn't triggered yet
-      if (entry.isIntersecting && !isInView) {
+      if (entry.isIntersecting) {
         setIsInView(true);
-        // Disconnect the observer once the element is visible
+        // Disconnect the observer once the element is visible to prevent further updates
         observer.disconnect();
       }
-    }, options);
+    }, JSON.parse(stableOptions));
 
     observer.observe(element);
 
     // Cleanup observer on component unmount
     return () => observer.disconnect();
-  }, [ref, options, isInView]);
+  }, [ref, stableOptions]);
 
   return [ref, isInView];
 };
