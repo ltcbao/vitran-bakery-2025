@@ -132,7 +132,7 @@ const Menu: React.FC = () => {
     setTimeout(() => {
       setActiveCategory(newCategory);
       setIsFiltering(false);
-    }, 500);
+    }, 300); // Match animation duration
   };
 
   const filteredProducts = useMemo(() => {
@@ -188,12 +188,12 @@ const Menu: React.FC = () => {
           ))}
         </div>
 
-        <div className="min-h-[50vh]">
-          {isFiltering ? (
-            <div className="flex justify-center items-center h-full pt-16">
-              <Spinner />
-            </div>
-          ) : activeCategory === 'All' ? (
+        <div
+          className={`min-h-[50vh] transition-opacity duration-300 ease-in-out ${
+            isFiltering ? 'opacity-0' : 'opacity-100'
+          }`}
+        >
+          {activeCategory === 'All' ? (
             <div className="space-y-16">
               {categoryOrder.map(category => (
                 productsByCategory[category] && productsByCategory[category].length > 0 && (
