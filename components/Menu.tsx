@@ -1,7 +1,8 @@
-import React, { useState, useMemo } from 'react';
-import type { Product } from '../types';
+import React, { useState, useMemo, useEffect } from 'react';
+import type { Product, RawMenuItem } from '../types';
 import Spinner from './Spinner';
 
+<<<<<<< HEAD
 // Raw data for menu items. Image URLs are generated from this.
 const rawMenuItems = [
   {
@@ -79,6 +80,8 @@ const menuItems: Product[] = rawMenuItems.map(item => {
   };
 });
 
+=======
+>>>>>>> ab40bfde538de7f0e4d22a526f4362d9b91b8504
 const ArrowLeftIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
 );
@@ -154,14 +157,49 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
 };
 
 const Menu: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<'All' | 'Bread' | 'Pastry' | 'Cookie'>('All');
-  const [isLoading, setIsLoading] = useState(false);
+  const [menuItems, setMenuItems] = useState<Product[]>([]);
+  const [initialLoading, setInitialLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const categories = useMemo(() => ({
-    "Breads & Loaves": menuItems.filter(item => item.category === 'Bread'),
-    "Pastries & Cakes": menuItems.filter(item => item.category === 'Pastry'),
-    "Cookies & Macarons": menuItems.filter(item => item.category === 'Cookie'),
-  }), []);
+  const [activeCategory, setActiveCategory] = useState<'All' | 'Bread' | 'Pastry' | 'Cookie'>('All');
+  const [isFiltering, setIsFiltering] = useState(false);
+
+  useEffect(() => {
+    const fetchMenuItems = async () => {
+      try {
+        const response = await fetch('/menu-data.json');
+        if (!response.ok) {
+          throw new Error(`Network response was not ok: ${response.statusText}`);
+        }
+        const rawData: RawMenuItem[] = await response.json();
+        
+        const processedItems: Product[] = rawData.map(item => ({
+          name: item.name,
+          description: item.description,
+          category: item.category,
+          imageUrls: item.imageFiles.map(file => `/images/${item.folder}/${file}`),
+        }));
+
+        setMenuItems(processedItems);
+      } catch (e) {
+        console.error("Failed to fetch menu items:", e);
+        setError("Our menu is currently unavailable. Please check back later.");
+      } finally {
+        setInitialLoading(false);
+      }
+    };
+
+    fetchMenuItems();
+  }, []);
+
+  const categories = useMemo(() => {
+    if (!menuItems.length) return {};
+    return {
+      "Breads & Loaves": menuItems.filter(item => item.category === 'Bread'),
+      "Pastries & Cakes": menuItems.filter(item => item.category === 'Pastry'),
+      "Cookies & Macarons": menuItems.filter(item => item.category === 'Cookie'),
+    };
+  }, [menuItems]);
 
   const categoryMap: { [key: string]: 'Bread' | 'Pastry' | 'Cookie' } = {
     "Breads & Loaves": 'Bread',
@@ -174,17 +212,36 @@ const Menu: React.FC = () => {
   const handleFilterClick = (category: 'All' | 'Bread' | 'Pastry' | 'Cookie') => {
     if (category === activeCategory) return;
 
-    setIsLoading(true);
+    setIsFiltering(true);
     setTimeout(() => {
       setActiveCategory(category);
-      setIsLoading(false);
+      setIsFiltering(false);
     }, 500);
   };
 
   const filteredProducts = useMemo(() => {
     if (activeCategory === 'All') return [];
     return menuItems.filter(item => item.category === activeCategory);
-  }, [activeCategory]);
+  }, [activeCategory, menuItems]);
+
+  if (initialLoading) {
+    return (
+      <section id="menu" className="py-20 bg-brand-pink min-h-[70vh] flex items-center justify-center">
+        <Spinner />
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section id="menu" className="py-20 bg-brand-pink min-h-[70vh] flex items-center justify-center">
+        <div className="text-center text-brand-brown">
+          <h2 className="text-2xl font-serif mb-4">Something went wrong</h2>
+          <p>{error}</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="menu" className="py-20 bg-brand-pink">
@@ -211,7 +268,7 @@ const Menu: React.FC = () => {
         </div>
 
         <div className="min-h-[50vh]">
-          {isLoading ? (
+          {isFiltering ? (
             <div className="flex justify-center items-center h-full pt-16">
               <Spinner />
             </div>
