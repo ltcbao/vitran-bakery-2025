@@ -7,6 +7,7 @@ import Menu from './components/Menu';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import MooncakeSection from './components/MooncakeSection';
 
 const App: React.FC = () => {
   return (
@@ -14,6 +15,8 @@ const App: React.FC = () => {
       <Header />
       <main>
         <Hero />
+              <MooncakeSection /> {/* Đặt component của chúng ta ở đây */}
+
         <About />
         <Menu />
         <Testimonials />
