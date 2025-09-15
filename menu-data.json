@@ -4,10 +4,10 @@
     "description": "Sự kết hợp hoàn hảo giữa cốt bánh mềm mịn, kem bắp ngọt thanh và hạnh nhân giòn rụm.",
     "imageFiles": [
       "1.jpg",
-      "/images/breads/2.jpg",
-      "/images/breads/3.jpg",
-      "/images/breads/4.jpg",
-      "/images/breads/5.jpg"
+      "2.jpg",
+      "3.jpg",
+      "4.jpg",
+      "5.jpg"
     ],
     "category": "Bánh Kem",
     "folder": "breads"
@@ -16,11 +16,11 @@
     "name": "Bánh Kem Trà Xanh Matcha",
     "description": "Hương vị trà xanh Nhật Bản đậm đà, tinh tế, mang lại cảm giác thư thái và nhẹ nhàng.",
     "imageFiles": [
-      "/images/breads/1.jpg",
-      "/images/breads/2.jpg",
-      "/images/breads/3.jpg",
-      "/images/breads/4.jpg",
-      "/images/breads/5.jpg"
+       "1.jpg",
+      "2.jpg",
+      "3.jpg",
+      "4.jpg",
+      "5.jpg"
     ],
     "category": "Bánh Kem",
     "folder": "breads"
@@ -29,11 +29,11 @@
     "name": "Bánh Kem Dâu Tươi",
     "description": "Vị ngọt dịu của kem tươi hòa quyện cùng vị chua thanh của những trái dâu tây căng mọng.",
     "imageFiles": [
-      "/images/breads/1.jpg",
-      "/images/breads/2.jpg",
-      "/images/breads/3.jpg",
-      "/images/breads/4.jpg",
-      "/images/breads/5.jpg"
+       "1.jpg",
+      "2.jpg",
+      "3.jpg",
+      "4.jpg",
+      "5.jpg"
     ],
     "category": "Bánh Kem",
     "folder": "breads"
@@ -42,11 +42,11 @@
     "name": "Rau Câu Trái Cây Nhiệt Đới",
     "description": "Mát lạnh và sảng khoái với nhiều loại trái cây tươi như xoài, kiwi, dâu tây.",
     "imageFiles": [
-     "/images/pastries/1.jpg",
-      "/images/pastries/2.jpg",
-      "/images/pastries/3.jpg",
-      "/images/pastries/4.jpg",
-      "/images/pastries/5.jpg"
+    "1.jpg",
+      "2.jpg",
+      "3.jpg",
+      "4.jpg",
+      "5.jpg"
     ],
     "category": "Rau Câu",
     "folder": "pastries"
