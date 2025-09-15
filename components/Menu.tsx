@@ -97,10 +97,7 @@ const Menu: React.FC = () => {
           name: item.name,
           description: item.description,
           category: item.category,
-          imageUrls: Array.from(
-            { length: item.imageCount },
-            (_, i) => `/images/${item.folder}/${item.slug}-${i + 1}.jpg`
-          ),
+          imageUrls: item.imageFiles.map(file => `/images/${item.folder}/${file}`),
         }));
 
         setMenuItems(processedItems);
