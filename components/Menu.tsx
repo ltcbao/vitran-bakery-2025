@@ -2,6 +2,7 @@ import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Product, RawMenuItem } from "../types";
 import rawMenuData from "../menu-data.json";
+import PricingSection from "./PricingSection"; // <-- 1. IMPORT COMPONENT MỚI
 
 // --- Định nghĩa kiểu dữ liệu cho media ---
 interface MediaItem {
@@ -459,6 +460,8 @@ const Menu: React.FC = () => {
             )}
           </motion.div>
         </AnimatePresence>
+                <PricingSection />
+
       </div>
     </section>
   );
