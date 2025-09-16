@@ -49,7 +49,7 @@ const Hero: React.FC = () => {
           Ngọt Ngào Từ Tâm, Trao Tay Yêu Thương
         </h1>
         <p className="text-lg md:text-xl max-w-2xl mx-auto drop-shadow-md mb-8">
-          Trải nghiệm hương vị tinh tế của những chiếc bánh kem và rau câu tươi mới, được làm thủ công mỗi ngày từ những nguyên liệu tốt nhất.
+          Trải nghiệm hương vị tinh tế của những chiếc bánh và rau câu tươi mới, được làm thủ công mỗi ngày từ những nguyên liệu tốt nhất.
         </p>
         <a 
           href="#menu" 
