@@ -2,7 +2,7 @@ import React from 'react';
 
 // Dữ liệu bảng giá để dễ quản lý
 const priceList = [
-  { name: 'Thập cẩm chà bông lạp xưởng Mai quế lộ', details: '200g / 2 trứng', price: '110k' },
+  { name: 'Thập cẩm chà bông lạp xưởng gà quay', details: '200g / 2 trứng', price: '110k' },
   { name: 'Đậu xanh', details: '200g / 2 trứng', price: '90k' },
   { name: 'Khoai môn', details: '200g / 2 trứng', price: '90k' },
   { name: 'Hạt sen', details: '200g / 2 trứng', price: '90k' },
@@ -52,7 +52,9 @@ const PricingSection = () => {
               </div>
             </div>
           </div>
-          
+            {/* <p className="text-center text-xl font-serif italic text-gray-600 mt-10">
+            Lưu ý: Giá trên chưa bao gồm hộp
+          </p> */}
           <p className="text-center text-xl font-serif italic text-gray-600 mt-10">
             Thân mời
           </p>
