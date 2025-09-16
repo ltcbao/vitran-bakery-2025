@@ -72,8 +72,8 @@ const Header: React.FC = () => {
 
   const navLinks = [
     { href: "#mooncake", label: "Bánh trung thu" },
-    { href: "#menu", label: "Thực Đơn" },
     { href: "#about", label: "Câu Chuyện" },
+    { href: "#menu", label: "Thực Đơn" },
     { href: "#testimonials", label: "Cảm Nhận" },
     { href: "#contact", label: "Liên Hệ" },
   ];

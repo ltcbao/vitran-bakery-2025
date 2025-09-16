@@ -3,6 +3,10 @@ import type { Testimonial } from '../types';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 const testimonials: Testimonial[] = [
+    {
+    quote: "Đây chắc chắn là tiệm bánh ngon nhất mình từng đến. Bánh trung thu vừa đẹp vừa ngon, nguyên liệu mới ăn rất thơm, không bị ngọt!",
+    author: 'Chị Thúy',
+  },
   {
     quote: "Đây chắc chắn là tiệm bánh ngon nhất mình từng đến. Bánh kem bắp mềm tan trong miệng, không gian lại ấm cúng. Một viên ngọc quý của khu phố!",
     author: 'Chị Lan Anh',

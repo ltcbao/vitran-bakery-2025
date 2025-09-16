@@ -1,106 +1,46 @@
 [
   {
-    "name": "Bánh Kem Bắp Hạnh Nhân",
-    "description": "Sự kết hợp hoàn hảo giữa cốt bánh mềm mịn, kem bắp ngọt thanh và hạnh nhân giòn rụm.",
+    "name": "Bánh thập cẩm",
+    "description": "Bánh thập cẩm nướng với nguyên liệu làm mới mỗi ngày, đem đến hương vị thơm ngon hòa quyện",
     "imageFiles": [
-      "1.jpg",
-      "2.jpg",
-      "3.jpg",
-      "4.jpg",
-      "5.jpg"
+      "banh-nuong-1.jpg",
+      "banh-nuong-2.jpg",
+      "banh-nuong-3.jpg",
+      "banh-nuong-4.jpg",
+      "banh-nuong-5.jpg",
+      "thap-cam-1.mp4",
+      "video-banh-trung-thu-1.mp4",
+      "video-banh-trung-thu-2.mp4",
+      "video-banh-trung-thu.mp4"
     ],
-    "category": "Bánh Kem",
-    "folder": "breads"
+    "category": "Bánh Trung Thu",
+    "folder": "Banh trung thu/thapcam"
   },
   {
-    "name": "Bánh Kem Trà Xanh Matcha",
-    "description": "Hương vị trà xanh Nhật Bản đậm đà, tinh tế, mang lại cảm giác thư thái và nhẹ nhàng.",
+    "name": "Bánh Dẻo",
+    "description": "Bánh dẻo handmade",
     "imageFiles": [
-       "1.jpg",
-      "2.jpg",
-      "3.jpg",
-      "4.jpg",
-      "5.jpg"
+       "banh-deo.jpg",
+      "banh-deo-2.jpg",
+      "banh-deo-3.jpg"
     ],
-    "category": "Bánh Kem",
-    "folder": "breads"
+    "category": "Bánh Trung Thu",
+    "folder": "Banh trung thu/deo"
   },
   {
-    "name": "Bánh Kem Dâu Tươi",
-    "description": "Vị ngọt dịu của kem tươi hòa quyện cùng vị chua thanh của những trái dâu tây căng mọng.",
+    "name": "Bánh Trung Thu Hiện Đại",
+    "description": "Bánh trung thu phong cách hiện đại với họa tiết cách tân bắt mắt nhưng vẫn giữ được hương vị đặc trưng, vừa đẹp mắt vừa ngon miệng",
     "imageFiles": [
-       "1.jpg",
-      "2.jpg",
-      "3.jpg",
-      "4.jpg",
-      "5.jpg"
+       "banh-hien-dai-5.jpg",
+      "banh-hien-dai-6.jpg",
+      "banh-hien-dai-7.jpg",
+      "banh-hien-dai-8.jpg",
+      "banh-hien-dai-2.jpg",
+      "banh-hien-dai-3.jpg",
+      "banh-hien-dai-4.jpg"
+
     ],
-    "category": "Bánh Kem",
-    "folder": "breads"
-  },
-  {
-    "name": "Rau Câu Trái Cây Nhiệt Đới",
-    "description": "Mát lạnh và sảng khoái với nhiều loại trái cây tươi như xoài, kiwi, dâu tây.",
-    "imageFiles": [
-    "1.jpg",
-      "2.jpg",
-      "3.jpg",
-      "4.jpg",
-      "5.jpg"
-    ],
-    "category": "Rau Câu",
-    "folder": "pastries"
-  },
-  {
-    "name": "Rau Câu Sơn Thủy 3D",
-    "description": "Tác phẩm nghệ thuật từ rau câu, kết hợp giữa vị dừa và lá dứa, đẹp mắt và ngon miệng.",
-    "imageFiles": [
-      "1.jpg",
-      "2.jpg",
-      "3.jpg",
-      "4.jpg",
-      "5.jpg"
-    ],
-    "category": "Rau Câu",
-    "folder": "pastries"
-  },
-  {
-    "name": "Rau Câu Cà Phê Cốt Dừa",
-    "description": "Hương thơm nồng nàn của cà phê quyện với vị béo ngậy của nước cốt dừa, đánh thức mọi giác quan.",
-    "imageFiles": [
-   "1.jpg",
-      "2.jpg",
-      "3.jpg",
-      "4.jpg",
-      "5.jpg"
-    ],
-    "category": "Rau Câu",
-    "folder": "pastries"
-  },
-  {
-    "name": "Bánh Su Kem Craquelin",
-    "description": "Vỏ bánh giòn tan với lớp nhân kem béo ngậy, mát lạnh, một món tráng miệng không thể chối từ.",
-    "imageFiles": [
-     "1.jpg",
-      "2.jpg",
-      "3.jpg",
-      "4.jpg",
-      "5.jpg"
-    ],
-    "category": "Bánh Ngọt",
-    "folder": "cookies"
-  },
-  {
-    "name": "Bánh Cupcake Socola",
-    "description": "Cốt bánh socola ẩm mịn, phủ lớp kem bơ ngọt ngào, chiều lòng những tín đồ yêu socola.",
-    "imageFiles": [
-      "1.jpg",
-      "2.jpg",
-      "3.jpg",
-      "4.jpg",
-      "5.jpg"
-    ],
-    "category": "Bánh Ngọt",
-    "folder": "cookies"
+    "category": "Bánh Trung Thu",
+    "folder": "Banh trung thu/hiendai"
   }
 ]

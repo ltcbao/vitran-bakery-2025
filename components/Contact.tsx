@@ -31,17 +31,17 @@ const Contact: React.FC = () => {
           <div className="flex flex-col items-center">
             <LocationIcon />
             <h3 className="text-xl font-serif font-bold mt-4 mb-2">Địa Chỉ</h3>
-            <p className="text-gray-600">123 Đường Bánh Ngọt<br />Quận 1, TP. Hồ Chí Minh</p>
+            <p className="text-gray-600">163/34/11 Đặng Văn Bi, p.Trường Thọ<br /> Thủ Đức, TP. Hồ Chí Minh</p>
           </div>
           <div className="flex flex-col items-center">
             <ClockIcon />
             <h3 className="text-xl font-serif font-bold mt-4 mb-2">Giờ Mở Cửa</h3>
-            <p className="text-gray-600">Thứ 3 - CN: 8h - 21h</p>
+            <p className="text-gray-600">Thứ 2 - t7: 8h - 21h</p>
           </div>
           <div className="flex flex-col items-center">
             <PhoneIcon />
             <h3 className="text-xl font-serif font-bold mt-4 mb-2">Liên Hệ</h3>
-            <p className="text-gray-600">hello@vitranbakery.com<br />(123) 456-7890</p>
+            <p className="text-gray-600">0907 188 351<br /></p>
           </div>
         </div>
       </div>
